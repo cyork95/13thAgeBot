@@ -34,8 +34,8 @@ async def on_message(message):
 
   if any(word in msg for word in sad_words):
     options = starter_encouragements
-    if "encourgements" in db.keys():
-      options = options + db['encourgements']
+    if "encouragements" in db.keys():
+      options = options + db['encouragements'].value
     await message.channel.send(random.choice(options))
 
   if msg.startswith("-new_encourage"):
@@ -52,7 +52,7 @@ async def on_message(message):
   if msg.startswith("-lst_encourage"):
     encouragments = []
     if "encouragements" in db.keys():
-      encouragments = db["enncouragments"]
-    await message.channel.send(encouragments)
+      encouragments = db["encouragements"]
+    await message.channel.send(encouragments.value)
 
 client.run(os.environ['TOKEN'])
